@@ -1,15 +1,29 @@
+using Infra.Data.AppDbContext;
+using Microsoft.EntityFrameworkCore;
+
 namespace Presentation
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+            #region Builders
+
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddDbContext<GymDbContext>(options =>
+            {
+                options.UseSqlServer(builder.Configuration.GetConnectionString("GymConnectionString"));
+            });
+
             var app = builder.Build();
+
+            #endregion
+
+            #region App Services (Middlewares)
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
@@ -35,6 +49,9 @@ namespace Presentation
                 pattern: "{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
+
+            #endregion
+
         }
     }
 }
