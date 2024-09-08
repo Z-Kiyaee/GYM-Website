@@ -1,4 +1,8 @@
+using Application.Services.Implementations;
+using Application.Services.Interfaces;
+using Domain.IRepositories;
 using Infra.Data.AppDbContext;
+using Infra.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Presentation
@@ -14,12 +18,27 @@ namespace Presentation
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            #region Repositories
+
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+            #endregion
+
+
+            #region Services
+
+            builder.Services.AddScoped<IUserService, UserService>();
+
+            #endregion
+
             builder.Services.AddDbContext<GymDbContext>(options =>
             {
                 options.UseSqlServer(builder.Configuration.GetConnectionString("GymConnectionString"));
             });
 
             var app = builder.Build();
+
+
 
             #endregion
 
