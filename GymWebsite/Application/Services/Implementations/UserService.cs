@@ -36,6 +36,7 @@ namespace Application.Services.Implementations
                 Name = userDTO.Name,
                 Mobile = userDTO.Mobile.Trim(),
                 Password = PasswordHelper.EncodePasswordMd5(userDTO.Password),
+                CreateDate = DateTime.Now,
             };
 
             return user;

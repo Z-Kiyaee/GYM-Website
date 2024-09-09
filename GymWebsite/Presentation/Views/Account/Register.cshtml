@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model Application.DTOs.UserRegisterDTO
+
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
@@ -19,21 +21,18 @@
 			<div class="image-holder">
 				<img src="/Register/images/BackToGymSWEAT.jpg" alt="">
 			</div>
-			<form action="">
+			<form asp-action="Register" asp-controller="Account" method="post">
 				<h3>Registration Form</h3>
-				<div class="form-group">
+@* 				<div class="form-group">
 					<input type="text" placeholder="First Name" class="form-control">
 					<input type="text" placeholder="Last Name" class="form-control">
-				</div>
-				<div class="form-wrapper">
-					<input type="text" placeholder="Username" class="form-control">
-					<i class="zmdi zmdi-account"></i>
-				</div>
-				<div class="form-wrapper">
+				</div> *@
+
+@* 				<div class="form-wrapper">
 					<input type="text" placeholder="Email Address" class="form-control">
 					<i class="zmdi zmdi-email"></i>
-				</div>
-				<div class="form-wrapper">
+				</div> *@
+@* 				<div class="form-wrapper">
 					<select name="" id="" class="form-control">
 						<option value="" disabled selected>Gender</option>
 						<option value="male">Male</option>
@@ -41,13 +40,25 @@
 						<option value="other">Other</option>
 					</select>
 					<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
+				</div> *@
+				<div class="form-wrapper">
+					<span style="color:red" asp-validation-for="Name"></span>
+					<input type="text" asp-for="Name" placeholder="Full Name" class="form-control">
+					<i class="zmdi zmdi-account"></i>
 				</div>
 				<div class="form-wrapper">
-					<input type="password" placeholder="Password" class="form-control">
+					<span style="color:red" asp-validation-for="Mobile"></span>
+					<input type="text" asp-for="Mobile" placeholder="Mobile" class="form-control">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+				</div>
+				<div class="form-wrapper">
+					<span style="color:red" asp-validation-for="Password"></span>
+					<input type="password" asp-for="Password" placeholder="Password" class="form-control">
 					<i class="zmdi zmdi-lock"></i>
 				</div>
 				<div class="form-wrapper">
-					<input type="password" placeholder="Confirm Password" class="form-control">
+					<span style="color:red" asp-validation-for="RePassword"></span>
+					<input type="password" asp-for="RePassword" placeholder="Confirm Password" class="form-control">
 					<i class="zmdi zmdi-lock"></i>
 				</div>
 				<button>
