@@ -59,5 +59,10 @@ namespace Application.Services.Implementations
 
             return true;
         }
+
+        public async Task<User?> GetUserByMobile(string mobile)
+        {
+            return await _userRepository.GetUserByMobile(mobile.Trim());
+        }
     }
 }

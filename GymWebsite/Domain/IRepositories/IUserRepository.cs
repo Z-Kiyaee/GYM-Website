@@ -12,7 +12,7 @@ namespace Domain.IRepositories
         Task<bool> IsExistUserByMobile(string mobile);
         Task AddUserToDB(User user);
         Task SaveChanges();
-
+        Task<User?> GetUserByMobile(string mobile);
 
     }
 }

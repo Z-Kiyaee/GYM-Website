@@ -38,5 +38,10 @@ namespace Infra.Data.Repositories
         {
             await _context.SaveChangesAsync();
         }
+
+        public async Task<User?> GetUserByMobile(string mobile)
+        {
+            return await _context.Users.SingleOrDefaultAsync(p => p.IsDelete == false && p.Mobile == mobile);
+        }
     }
 }

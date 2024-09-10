@@ -1,0 +1,45 @@
+﻿@model Application.DTOs.UserLoginDTO
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Login Form</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- MATERIAL DESIGN ICONIC FONT -->
+	<link rel="stylesheet" href="/Register/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+	<!-- STYLE CSS -->
+	<link rel="stylesheet" href="/Register/css/style.css">
+</head>
+
+<body>
+
+	<div class="wrapper" style="background-image: url('/Register/images/fitness-business-plan-2 (1).jpg');">
+		<div class="inner">
+			<div class="image-holder">
+				<img src="/Register/images/NF-Special3.jpg" alt="">
+			</div>
+			<form asp-action="Login" asp-controller="Account" method="post">
+				<h3>Login Form</h3>
+				<div class="form-wrapper">
+					<span style="color:red" asp-validation-for="Mobile"></span>
+					<input type="text" asp-for="Mobile" placeholder="Mobile" class="form-control">
+					<i class="fa fa-phone" aria-hidden="true"></i>
+				</div>
+				<div class="form-wrapper">
+					<span style="color:red" asp-validation-for="Password"></span>
+					<input type="password" asp-for="Password" placeholder="Password" class="form-control">
+					<i class="zmdi zmdi-lock"></i>
+				</div>
+				<button>
+					Login
+					<i class="zmdi zmdi-arrow-right"></i>
+				</button>
+			</form>
+		</div>
+	</div>
+
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

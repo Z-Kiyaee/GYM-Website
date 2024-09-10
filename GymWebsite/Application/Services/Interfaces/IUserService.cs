@@ -14,5 +14,6 @@ namespace Application.Services.Interfaces
         Task<User> FillUserEntity(UserRegisterDTO userDTO);
         Task AddUserToDB(User user);
         Task<bool> RegisterUser(UserRegisterDTO userDTO);
+        Task<User?> GetUserByMobile(string mobile);
     }
 }
