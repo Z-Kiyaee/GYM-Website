@@ -90,8 +90,16 @@
                             <li><a href="./services.html">Services</a></li>
                             <li><a href="./team.html">Our Team</a></li>
                             <li><a href="./contact.html">Contact</a></li>
-                            <li><a asp-action="Register" asp-controller="Account">Register</a></li>
-                            <li><a asp-action="Login" asp-controller="Account">Login</a></li>
+
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-action="Logout" asp-controller="Account">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li><a asp-action="Register" asp-controller="Account">Register</a></li>
+                                <li><a asp-action="Login" asp-controller="Account">Login</a></li>
+                            }
 @*                             <li>
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">

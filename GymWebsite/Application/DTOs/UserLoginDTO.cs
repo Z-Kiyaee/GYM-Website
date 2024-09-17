@@ -15,5 +15,6 @@ namespace Application.DTOs
         [Required(ErrorMessage = "Your password is required")]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+        public bool RememberMe { get; set; }
     }
 }

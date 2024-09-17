@@ -71,7 +71,7 @@ namespace Presentation.Controllers
                     var principal = new ClaimsPrincipal(claimIdentity);
 
                     var authProps = new AuthenticationProperties();
-                    //authProps.IsPersistent = model.RememberMe;
+                    authProps.IsPersistent = userDTO.RememberMe;
 
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal, authProps);
                     return RedirectToAction("Index", "Home");
@@ -84,7 +84,11 @@ namespace Presentation.Controllers
         #endregion
 
         #region Logout
-
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return Redirect("/");
+        }
         #endregion
     }
 }
