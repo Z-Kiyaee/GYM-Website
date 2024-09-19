@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+using DaneshkarShop.Application.Utilities;
 
 namespace Presentation.Controllers
 {
@@ -58,7 +59,7 @@ namespace Presentation.Controllers
             {
                 var user = await _userService.GetUserByMobile(userDTO.Mobile);
 
-                if (user != null)
+                if (user != null && user.Password == PasswordHelper.EncodePasswordMd5(userDTO.Password))
                 {
                     var claims = new List<Claim>
                     {
